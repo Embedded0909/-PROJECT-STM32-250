@@ -148,7 +148,6 @@ void DVN_SSD1306_UpdateScreen(void) {
 
 
 uint8_t DVN_SSD1306_Init(){
-	//Delay 250000
 	uint32_t p = 250000;
 	while(p>0)
 		p--;
@@ -156,7 +155,6 @@ uint8_t DVN_SSD1306_Init(){
 	if (HAL_I2C_IsDeviceReady(&hi2c1, DVN_SSD1306_I2C_ADDR, 1, 20000) != HAL_OK) {
 		return 0;
 	}
-	//Delay 2500
 	uint32_t p2 = 2500;
 	while(p2>0)
 		p2--;
@@ -210,10 +208,7 @@ void DVN_SSD1306_GotoXY(uint16_t x, uint16_t y) {
 }
 
 void DVN_SSD1306_DrawPixel(uint16_t x, uint16_t y, SSD1306_COLOR_t color) {
-	if (
-		x >= SSD1306_WIDTH ||
-		y >= SSD1306_HEIGHT
-	) {
+	if ( x >= SSD1306_WIDTH || y >= SSD1306_HEIGHT ) {
 		return;
 	}
 	if (SSD1306.Inverted) {
